@@ -6,7 +6,7 @@ piv    =javaObject("net.trucomanx.pdsplibj.pdspiv.PdsPiv");
 
 %%% Configuração de dados do match %%%
 conf.set_roi_window_size(50);			%%[OK]
-conf.set_search_step_size(2);			%%[OK]
+conf.set_search_step_size(4);			%%[OK]
 conf.set_search_max_length(100);		%%[OK]
 conf.set_points_by_columns(8);			%%[OK]
 conf.set_points_by_lines(6);			%%[OK]
@@ -39,11 +39,13 @@ dlins= dlins(valid_ids);	dcols= dcols(valid_ids);
 
 H=piv.get_image_height();
 W=piv.get_image_width();
-[lins';cols']
-[lins2';cols2']
+[lins';
+ cols']
+[lins2';
+ cols2']
 
 hold on;
-%axis([0 W 0 H]); axis([0 W-1 0 H-1]); quiver(cols,lins,dcols,dlins);
+axis([0 W 0 H]); axis([0 W-1 0 H-1]); quiver(cols,lins,dcols,dlins);
 axis([0 W 0 H]); scatter(cols,lins,"g");
 axis([0 W 0 H]); scatter(cols2,lins2,"r");
 %axis([0 W 0 H]); quiver(cols(1:4),lins(1:4),dcols(1:4),dlins(1:4),"y");
