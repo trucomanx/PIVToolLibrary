@@ -22,7 +22,8 @@ FILENAME_OF_FIRST_IMAGE = [DIRECTORY_OF_IMAGES,filesep,num2str(NUM_OF_FIRST),'.b
 
 [Pin Nl Nc]=select_initial_grid_points(FILENAME_OF_FIRST_IMAGE,conf);
 
-Pout{1}=Pin;
+KK=1:
+Pout{KK}=Pin;
 plot_rectangle_in_image(FILENAME_OF_FIRST_IMAGE,Pout{1},conf);
 print([DIRECTORY_OF_RESULTS,filesep,num2str(1),'.png'],'-dpng');
 
@@ -36,13 +37,14 @@ for II=(NUM_OF_FIRST+STEP):NUM_OF_LAST
 	piv.load(	FILENAME1,FILENAME2);
 
 	disp(['calculando tracking:',num2str(II-STEP),'-',num2str(II)]);
-	Pout{II}=piv.tracking_points(Pin,conf);
+	KK=KK+1;
+	Pout{KK}=piv.tracking_points(Pin,conf);
 
-	plot_rectangle_in_image(FILENAME2,Pout{II},conf);
+	plot_rectangle_in_image(FILENAME2,Pout{KK},conf);
 	print([DIRECTORY_OF_RESULTS,filesep,num2str(II),'.png'],'-dpng');
 	%Pout{JJ}.toString()
 
-	Pin=Pout{II};
+	Pin=Pout{KK};
 end
 
 %Poutmean=average_distance_traveled(Pout,Nl,Nc);
