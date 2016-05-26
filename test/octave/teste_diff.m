@@ -13,8 +13,8 @@ javaaddpath ("../../lib/pdsplibj.jar");
 
 %java_matrix_autoconversion (true);
 
-DIRECTORY_OF_IMAGES  = configure_directory_of_images('');
-DIRECTORY_OF_RESULTS = configure_directory_of_results(DIRECTORY_OF_IMAGES);
+DIRECTORY_OF_IMAGES  = configure_directory_of_images('../../images-data');
+DIRECTORY_OF_RESULTS = configure_directory_of_results([DIRECTORY_OF_IMAGES,filesep,'out']);
 
 conf   =javaObject("net.trucomanx.pdsplibj.pdspiv.PdsPivConf");
 piv    =javaObject("net.trucomanx.pdsplibj.pdspiv.PdsPiv");
@@ -24,7 +24,7 @@ piv    =javaObject("net.trucomanx.pdsplibj.pdspiv.PdsPiv");
 [NUM_OF_FIRST NUM_OF_LAST FATOR_MM_PX]=configure_piv_values(conf);
 
 %%% Configuração dos pontos iniciais
-FILENAME_OF_FIRST_IMAGE = [DIRECTORY_OF_IMAGES,filesep,num2str(NUM_OF_FIRST),'.bmp'];
+FILENAME_OF_FIRST_IMAGE = [DIRECTORY_OF_IMAGES,filesep,'img',num2str(NUM_OF_FIRST),'.bmp'];
 [Pin Nl Nc]=select_initial_grid_points(FILENAME_OF_FIRST_IMAGE,conf);
 
 KK=1;
@@ -36,8 +36,8 @@ STEP=1;
 for II=(NUM_OF_FIRST+STEP):NUM_OF_LAST
 
 	
-	FILENAME1= [DIRECTORY_OF_IMAGES,filesep,num2str(II-STEP),'.bmp'];
-	FILENAME2= [DIRECTORY_OF_IMAGES,filesep,num2str(II  ),'.bmp'];
+	FILENAME1= [DIRECTORY_OF_IMAGES,filesep,'img',num2str(II-STEP),'.bmp'];
+	FILENAME2= [DIRECTORY_OF_IMAGES,filesep,'img',num2str(II  ),'.bmp'];
 
 	piv.load(FILENAME1,FILENAME2);
 
