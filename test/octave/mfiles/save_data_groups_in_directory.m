@@ -24,7 +24,9 @@ function save_data_groups_in_directory(DIRECTORY,Nc,Nl,FATOR_MM_PX,Pout)
 		lin0=lin0/Nl;
 		col0=col0/Nl;
 
+        figure;
 		print_and_save(DIRECTORY,KK,'lin',lin,FATOR_MM_PX);
+        figure;
 		print_and_save(DIRECTORY,KK,'col',col,FATOR_MM_PX);
 	end
 
@@ -63,8 +65,9 @@ function print_and_save(DIRECTORY,KK,TEXT,VAR,FATOR_MM_PX)
 		N=length(VAR);
 		VARIABLE=VAR*FATOR_MM_PX;
 		plot([0:(N-1)],VARIABLE,'-s');
+        xlim([0 (N-1)]);
 		xlabel('Sample time');
 		ylabel('Dislocation');
-		print(FILEPNGCOL,'-dpng');
+		print(FILEPNGCOL,'-dpng','-tight');
 		save( FILEDATCOL,'VARIABLE','-ascii');
 end

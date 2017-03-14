@@ -1,17 +1,20 @@
-function [Pin Nl Nc]=select_initial_grid_points(filename,conf,varargin)
+function [Pin Nl Nc]=select_initial_grid_points(DIRECTORY_OF_IMAGES,FORMATNAME,varargin)
 
-	DATA=[3 5 10];
+	DATA=[3 5 10 18 0];
 
-	if(nargin>=3)
-		DirWithData=varargin{1};
-		FileWithData=varargin{2};
-		D=load([DirWithData,filesep,FileWithData]);
+	if(nargin>=2)
+		D=load(varargin{1});
+        if isfield (D, 'D')
+            D=D.D;
+        end
 		DATA(1)=D.number_of_points_by_line;
 		DATA(2)=D.number_of_points_by_column;
 		DATA(3)=D.horizontal_displacement_in_pixels;
+        DATA(4)=D.window_size;
+        DATA(5)=D.number_of_first_image;
 	end
 
-	WSIZE=conf.get_roi_window_size();	
+	WSIZE=DATA(4);	
 
 	prompt1 = {'Number of points by line:'	,'Number of points by column:'	,'Horizontal displacement in pixels:'};
 	defin1  = {num2str(DATA(1))				,num2str(DATA(2))				,num2str(DATA(3))};
@@ -30,9 +33,9 @@ function [Pin Nl Nc]=select_initial_grid_points(filename,conf,varargin)
 	col=zeros(1,N);
 	lin=zeros(1,N);
 
+    FILENAME_OF_FIRST_IMAGE = fullfile(DIRECTORY_OF_IMAGES,sprintf(FORMATNAME,DATA(5)));
 
-
-	img  = imread(filename);
+	img  = imread(FILENAME_OF_FIRST_IMAGE);
 	hf=figure;	
 	imshow(img);
 
@@ -63,4 +66,16 @@ function [Pin Nl Nc]=select_initial_grid_points(filename,conf,varargin)
 	lin=floor(lin);
 
 	Pin.set_arrays(lin,col);
+
+	if(nargin>=2)
+		D=load(varargin{1});
+        if isfield (D, 'D')
+            D=D.D;
+        end
+		D.number_of_points_by_line=answer{1};
+		D.number_of_points_by_column=answer{2};
+		D.horizontal_displacement_in_pixels=answer{3};
+        DATA(4)=D.window_size;
+        DATA(5)=D.number_of_first_image;
+	end
 end
