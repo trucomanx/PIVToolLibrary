@@ -1,6 +1,6 @@
 function [NUM_OF_FIRST NUM_OF_LAST FATOR_MM_PX]=configure_piv_values(conf, varargin)
 
-	DATA={64 0 12 24 107 1 50 0.82 1};
+	DATA={64 1 4 24 107 1 150 0.82 1};
 
 	if(nargin>=2)
 		D=load(varargin{1});

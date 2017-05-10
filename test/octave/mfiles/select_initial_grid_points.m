@@ -1,8 +1,8 @@
-function [Pin Nl Nc]=select_initial_grid_points(DIRECTORY_OF_IMAGES,FORMATNAME,varargin)
+function [Pin Nl Nc FILENAME_OF_FIRST_IMAGE]=select_initial_grid_points(DIRECTORY_OF_IMAGES,FORMATNAME,NUM_OF_FIRST,conf,varargin)
 
-	DATA=[3 5 10 18 0];
+	DATA=[3 5 10 conf.get_roi_window_size() NUM_OF_FIRST];
 
-	if(nargin>=2)
+	if(nargin>4)
 		D=load(varargin{1});
         if isfield (D, 'D')
             D=D.D;
@@ -48,7 +48,7 @@ function [Pin Nl Nc]=select_initial_grid_points(DIRECTORY_OF_IMAGES,FORMATNAME,v
 		L=str2num(answer{3});
 
 		for JJ=1:Nl
-			col((II-1)*Nl+JJ)=ac+round(L*randn(1));
+			col((II-1)*Nl+JJ)=abs(ac+round(L*randn(1)));
 			lin((II-1)*Nl+JJ)=al;%+round(L*randn(1));
 		end
 
@@ -67,7 +67,7 @@ function [Pin Nl Nc]=select_initial_grid_points(DIRECTORY_OF_IMAGES,FORMATNAME,v
 
 	Pin.set_arrays(lin,col);
 
-	if(nargin>=2)
+	if(nargin>4)
 		D=load(varargin{1});
         if isfield (D, 'D')
             D=D.D;
