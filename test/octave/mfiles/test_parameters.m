@@ -17,6 +17,7 @@ function  test_parameters(DIRECTORY_OF_IMAGES,DIRECTORY_OF_RESULTS,FORMATNAME,DA
     FILENAME_OF_FIRST_IMAGE = fullfile(DIRECTORY_OF_IMAGES,sprintf(FORMATNAME,D.number_of_first_image));
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for II=0:(Pin.get_length()-1)
+        disp(['test_parameters.m: Analyzing point ' num2str(II+1) ' of ' num2str(Pin.get_length())])
         P0=Pin.get_array_from_id(II);
         X0=[0:(D.window_size-1)];
 
