@@ -1,0 +1,84 @@
+# Created by Octave 4.2.2, Mon Apr 23 17:07:28 2018 GMT <unknown@unknown>
+# name: D
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 14
+# name: millimeters
+# type: scalar
+24.1
+
+
+# name: pixels
+# type: scalar
+89.17
+
+
+# name: number_of_first_image
+# type: scalar
+0
+
+
+# name: number_of_last_image
+# type: scalar
+18
+
+
+# name: window_size
+# type: scalar
+32
+
+
+# name: search_step_size
+# type: scalar
+1
+
+
+# name: search_max_legth
+# type: scalar
+50
+
+
+# name: search_threshold
+# type: scalar
+0.82
+
+
+# name: verbose_flag
+# type: scalar
+1
+
+
+# name: number_of_points_by_line
+# type: scalar
+3
+
+
+# name: number_of_points_by_column
+# type: scalar
+1
+
+
+# name: horizontal_displacement_in_pixels
+# type: scalar
+0
+
+
+# name: input
+# type: matrix
+# rows: 2
+# columns: 3
+ 287 303 296
+ 120 458 780
+
+
+# name: pinput
+# type: matrix
+# rows: 2
+# columns: 3
+ 281 281 277
+ 393 458 525
+
+
+
+

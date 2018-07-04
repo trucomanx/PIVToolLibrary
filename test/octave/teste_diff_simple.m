@@ -44,7 +44,7 @@ for II=(NUM_OF_FIRST+STEP):NUM_OF_LAST
 
 	disp(['calculando tracking:',num2str(II-STEP),'-',num2str(II)]);
 	KK=KK+1;
-    Pin.toString()
+    %Pin.toString()
 	Pout{KK}=piv.tracking_points(Pin,conf);
 
 
