@@ -9,7 +9,7 @@ addpath(genpath(make_absolute_filename('mfiles')));
 graphics_toolkit('qt')
 %graphics_toolkit('gnuplot')
 
-debug_java (1); % Carregando java
+debug_java (true); % Carregando java
 javaaddpath (make_absolute_filename('lib/pdsplibj.jar'));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
